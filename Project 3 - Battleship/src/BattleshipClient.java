@@ -3,7 +3,7 @@ import java.awt.Color;
 import java.io.*;
 import java.util.*;
 public class BattleshipClient {
- /* for anyonr who don't the rules of the board game Battleship:
+ /* for anyone who don't the rules of the board game Battleship:
         1. You make your "ships" by pressing buttons in a certain way on the provided GUI
         2. Then, you "attack" by pressing a button on the newly provided GUI
         3. You or the Server's AI wins when the ships of either side are sunk
