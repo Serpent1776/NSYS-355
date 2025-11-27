@@ -133,3 +133,28 @@ class BattleshipGrid:
             if(not i.isHitorMiss()):
                 return False
         return True
+    def findPointWithinShips(self, point):
+        try:
+            for i in(self.__carrier):
+                if(i.equals(point)):
+                    return "carrier"
+        except:
+            pass
+        try:
+            for i in(self.__battleship):
+                if(i.equals(point)):
+                    return "battleship"
+        except:
+            pass
+        try:
+            for i in(self.__submarine):
+                if(i.equals(point)):
+                    return "submarine"
+        except:
+            pass
+        try:
+            for i in(self.__partolBoat):
+                if(i.equals(point)):
+                    return "patrol boat"
+        except:
+            pass

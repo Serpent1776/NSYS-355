@@ -105,17 +105,17 @@ while True: # listen for connections forever
         point = commanderAI.attack(clientGrid)
         message = ""
         if(point.isHitorMiss()):
-            message += "We hit you at " + point.getLocation() + "!\n"
+            message += "We hit your " + clientGrid.findPointWithinShips(point) + "!\n"
             message += clientGrid.eliminationVision() + "\n"
             print(clientGrid.eliminationVision())
             playerHealth -= 1
         if(hit.isHitorMiss()):
-            message += "You hit us at " + hit.getLocation() + "!\n"
+            message += "You hit our " + serverGrid.findPointWithinShips(hit) + "!\n"
             message += serverGrid.attackVision() + "\n"
             print(serverGrid.eliminationVision())
             serverHealth -= 1
         else:
-            message += "You missed us at " + hit.getLocation() + "!\n"
+            message += "You missed us!\n"
         if(serverGrid.isCarrierSunk() and not alreadySaidCarrierC):
             message += "You sunk our Carrier!\n"
             alreadySaidCarrierC = True

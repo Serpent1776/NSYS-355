@@ -37,6 +37,8 @@ class BattleshipPoint:
           return self.__location[0] == other.__location[0]
      def sameLocationNum(self, other):
           return self.__location[1:] == other.__location[1:]
+     def equals(self, other):
+          return self.sameLocationLetter(other) and self.sameLocationNum(other)
      def letterToVertNum(self):
         locations = {
             "A":0,

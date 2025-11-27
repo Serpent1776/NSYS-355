@@ -7,6 +7,19 @@ public class BattleshipClient {
         1. You make your "ships" by pressing buttons in a certain way on the provided GUI
         2. Then, you "attack" by pressing a button on the newly provided GUI
         3. You or the Server's AI wins when the ships of either side are sunk
+
+        To make a ship in the GUI: you would press a button like "E5" then press a button within the range to "make" the ship.
+            For a carrier, those buttons would be buttons named: "E9", "E1", "I5", "A5" since the range is 5
+            For a battleship, those buttons would be buttons named: "E8", "E2", "H5", "B5" since the range is 4
+            For a submarine, those buttons would be buttons named: "E7", "E3", "G5", "C5" since the range is 3
+            For a carrier, those buttons would be buttons named: "E6", "E4", "F5", "D5" since the range is 2
+            Think of it as a coordinate plot with the letters as y and the number as x.
+
+        Some possibilities:
+            A1 to A5 for the carrier
+            A2 to D2 for the battleship
+            D7 to D5 for the submarine
+            G1 to H1 for the patrol boat
 */
     public static void main(String[] args) throws Exception {
         int serverPort = 7447;
@@ -108,10 +121,10 @@ public class BattleshipClient {
         clientSocket.receive(rec); //gets if the attack hit and if server had hit one of their ships. 
         String recString = new String(rec.getData()); 
         System.out.println(recString);
-        if(recString.contains("You hit us")) {
-            hitBoard.paint(new CoordinateString(attack), new Color(255, 120, 120));
+        if(recString.contains("You hit")) {
+            hitBoard.paint(new CoordinateString(attack), new Color(255, 60, 60));
         } else {
-            hitBoard.paint(new CoordinateString(attack), new Color(190, 190, 190));
+            hitBoard.paint(new CoordinateString(attack), new Color(255, 255, 255));
         }
         if(recString.contains("won") || recString.contains("lost")) {
             playing = false;
