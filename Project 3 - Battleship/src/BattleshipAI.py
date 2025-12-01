@@ -178,7 +178,7 @@ class BattleshipAI:
         elif((self.__hitIndex < 1 or self.__missIndex + self.__sameHits > self.__hitIndex*8) and self.__combo == 0): #default case: random
             while(point in self.__hits or point in self.__misses): 
                 point = clientGrid.findByNumber(random.randint(0,99))
-            if(point.isShipPart()):
+            if(point.isShipPart()): #only marks a hit when it hits a point that is a part of a ship.
                         point.setHit()
                         self.__hits[self.__hitIndex] = point
                         self.__hitIndex += 1
@@ -193,13 +193,13 @@ class BattleshipAI:
                     randNum = random.randint(0,3)
                     self.__spot = randNum
                 if self.__spot == 0:
-                    point = clientGrid.findByNumber(self.__hits[self.__hitIndex - 1].getIndex() + 1)
+                    point = clientGrid.findByNumber(self.__hits[self.__hitIndex - 1].getIndex() + 1) #goes to an adjacent right point
                 elif self.__spot == 1:
-                    point = clientGrid.findByNumber(self.__hits[self.__hitIndex - 1].getIndex() + 10)
+                    point = clientGrid.findByNumber(self.__hits[self.__hitIndex - 1].getIndex() + 10) #goes to an upward adjacent point
                 elif self.__spot == 2:
-                    point = clientGrid.findByNumber(self.__hits[self.__hitIndex - 1].getIndex() - 1)
+                    point = clientGrid.findByNumber(self.__hits[self.__hitIndex - 1].getIndex() - 1) #goes to an adjacent left point
                 elif self.__spot == 3:
-                    point = clientGrid.findByNumber(self.__hits[self.__hitIndex - 1].getIndex() - 10)
+                    point = clientGrid.findByNumber(self.__hits[self.__hitIndex - 1].getIndex() - 10) #goes to a downward adjacent point
                 if(point in self.__hits):
                     self.__spot = None
                     self.__sameHits += 1
